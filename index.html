@@ -8,7 +8,7 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; transition: background-color 0.3s, color 0.3s, border-color 0.3s; }
     
-    /* Variáveis de Tema Noite (Inspirado na Identidade Noturna da Marca) */
+    /* Variáveis de Tema Noite */
     :root {
       --bg-body: #0f141e;
       --text-main: #f3f4f6;
@@ -17,7 +17,7 @@
       --border-light: #374a6d;
       --text-muted: #9ca3af;
       --text-dimmed: #d1d5db;
-      --accent-color: #d4a373; /* Tom Cobre/Terroso Iluminado para Noite */
+      --accent-color: #d4a373;
       --accent-hover: #bc8a5f;
       --btn-bg: #0f141e;
       --card-bg: #182030;
@@ -26,7 +26,7 @@
       --cat-bg: #222e47;
     }
 
-    /* Variáveis de Tema Dia (Baseado na Identidade Visual da Imagem: Off-white, Cinza Sofisticado e Terroso) */
+    /* Variáveis de Tema Dia */
     [data-theme="light"] {
       --bg-body: #fbf9f6;
       --text-main: #4a423b;
@@ -35,7 +35,7 @@
       --border-light: #d6cebf;
       --text-muted: #8c7f73;
       --text-dimmed: #5e5349;
-      --accent-color: #b8866b; /* Tom Cobre/Terroso da Marca */
+      --accent-color: #b8866b;
       --accent-hover: #9e6f55;
       --btn-bg: #f4efe9;
       --card-bg: #ffffff;
@@ -48,12 +48,18 @@
     
     .container { max-width: 800px; margin: 0 auto; flex: 1; width: 100%; }
     
-    /* Cabeçalho da Marca Fictícia */
+    /* Cabeçalho com Logo */
     .header-marca {
       text-align: center;
       margin-bottom: 20px;
       padding: 10px 0;
       border-bottom: 1px solid var(--border-color);
+    }
+    .logo-img {
+      max-width: 220px;
+      height: auto;
+      margin-bottom: 10px;
+      border-radius: 8px;
     }
     .header-marca h2 {
       font-size: 0.8rem;
@@ -84,7 +90,6 @@
       padding: 0 4px;
     }
 
-    /* Botão de Tema Delicado */
     .theme-toggle-btn {
       background: var(--bg-container);
       border: 1px solid var(--border-light);
@@ -104,7 +109,6 @@
       transform: scale(1.08);
     }
 
-    /* Barra Superior Responsiva: Calendário e Perfil */
     .seletor-topo-container {
       background: var(--bg-container);
       border: 1px solid var(--border-color);
@@ -147,7 +151,6 @@
       white-space: nowrap;
     }
 
-    /* Estilo do Menu Customizado */
     .custom-dropdown {
       position: relative;
       width: 100%;
@@ -257,7 +260,6 @@
       cursor: pointer;
     }
 
-    /* Navegação */
     .nav-tabs { display: flex; gap: 6px; margin-bottom: 16px; }
     .tab-btn { flex: 1; padding: 10px 4px; background: var(--bg-container); border: 1px solid var(--border-color); color: var(--text-muted); border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 0.85rem; text-align: center; }
     .tab-btn.active { background: var(--cat-bg); color: var(--text-main); border-color: var(--border-light); }
@@ -265,7 +267,6 @@
     .aba-conteudo { display: none; }
     .aba-conteudo.active { display: block; }
 
-    /* Estilos da Aba Registro */
     .categoria-titulo {
       display: flex;
       align-items: center;
@@ -365,7 +366,6 @@
       color: var(--text-muted);
     }
 
-    /* Painel do Saldo do Dia e Salvar */
     .painel-guardar {
       background: var(--bg-container);
       border: 1px solid var(--border-color);
@@ -415,7 +415,6 @@
       background: var(--accent-hover);
     }
 
-    /* Estilos das Abas Relatórios e Evolução */
     .card { background: var(--bg-container); border-radius: 12px; padding: 14px; margin-bottom: 14px; border: 1px solid var(--border-color); }
     .card-title { font-size: 1.05rem; font-weight: bold; color: var(--accent-color); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
 
@@ -510,7 +509,6 @@
       margin-top: 8px;
     }
 
-    /* Rodapé */
     .app-footer {
       text-align: center;
       padding: 14px 4px;
@@ -540,7 +538,6 @@
       opacity: 0.8;
     }
 
-    /* Modal de Termos e Privacidade */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -609,7 +606,6 @@
     }
   </style>
 
-  <!-- Bibliotecas externas (jsPDF e Chart.js) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -617,8 +613,9 @@
 
   <div class="container">
     
-    <!-- Cabeçalho com a Identidade Visual Fictícia -->
+    <!-- Cabeçalho com Logomarca Integrada -->
     <div class="header-marca">
+      <img src="logo.png" alt="Clínica de Psicologia" class="logo-img">
       <h2>Clínica de</h2>
       <h1>Psicologia</h1>
       <p>Cuidado para todas as fases da sua história</p>
@@ -640,12 +637,10 @@
     <!-- ==================== ABA 1: REGISTRO ==================== -->
     <div id="aba-registro" class="aba-conteudo active">
       
-      <!-- Seletor de Data e Perfil Diagnóstico -->
       <div class="seletor-topo-container">
         <div class="perfil-box">
           <span class="perfil-label">Perfil / Laudo:</span>
           
-          <!-- Menu customizado -->
           <div class="custom-dropdown" id="custom-dropdown-perfil">
             <button type="button" class="custom-dropdown-btn" onclick="toggleDropdown(event)">
               <span id="custom-dropdown-selected-text">Selecionar Perfil...</span>
@@ -1579,4 +1574,3 @@
 
 </body>
 </html>
-
