@@ -48,17 +48,21 @@
     
     .container { max-width: 800px; margin: 0 auto; flex: 1; width: 100%; }
     
-    /* Cabeçalho Apenas com a Logo */
+    /* Cabeçalho com Logo Ocupando Todo o Espaço do Topo */
     .header-marca {
-      text-align: center;
+      width: 100%;
       margin-bottom: 14px;
-      padding: 4px 0;
       border: none;
+      padding: 0;
+      overflow: hidden;
+      border-radius: 10px;
     }
     .logo-img {
-      max-width: 200px;
+      width: 100%;
       height: auto;
-      border-radius: 6px;
+      display: block;
+      object-fit: cover;
+      border-radius: 10px;
     }
 
     .header-topo { 
@@ -592,7 +596,7 @@
 
   <div class="container">
     
-    <!-- Cabeçalho com Apenas a Imagem da Logo -->
+    <!-- Cabeçalho com Logo Ocupando Todo o Espaço Horizontal -->
     <div class="header-marca">
       <img src="logo.png" alt="Clínica de Psicologia" class="logo-img">
     </div>
